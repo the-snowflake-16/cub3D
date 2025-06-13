@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/fortytwo/cccc",
-      "program": "/home/fortytwo/cccc/build/Debug/outDebug",
+      "cwd": "/home/fortytwo/cub3D",
+      "program": "/home/fortytwo/cub3D/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

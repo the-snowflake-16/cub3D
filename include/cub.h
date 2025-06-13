@@ -1,6 +1,7 @@
 #ifndef CUB_H
 #define CUB_H
 
+#include "../libft/libft.h"
 #include "../minilibx/mlx.h"
 #include <stdio.h>
 #include <unistd.h>
@@ -15,5 +16,8 @@ typedef struct s_map
     int y;
     int player;
 } t_map;
+
+
+void create_map(char **argv);
 
 #endif
