@@ -6,7 +6,7 @@
 /*   By: fortytwo <fortytwo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 12:14:58 by fortytwo          #+#    #+#             */
-/*   Updated: 2025/06/16 13:49:30 by fortytwo         ###   ########.fr       */
+/*   Updated: 2025/06/17 19:20:38 by fortytwo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,13 @@ int	parse_color(char *line)
 	int	r, g, b;
 	char **rgb;
 
-	rgb = ft_split(line + 2, ','); // пропускаємо "F " або "C "
+	rgb = ft_split(line + 2, ',');
 	r = ft_atoi(rgb[0]);
 	g = ft_atoi(rgb[1]);
 	b = ft_atoi(rgb[2]);
 
 	// очищення пам'яті
 	// free_split(rgb);
-
-	// збираємо в одне число
 	return ((r << 16) | (g << 8) | b);
 }
 

@@ -6,7 +6,7 @@
 /*   By: fortytwo <fortytwo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:20:12 by vmileshk          #+#    #+#             */
-/*   Updated: 2025/06/16 13:59:10 by fortytwo         ###   ########.fr       */
+/*   Updated: 2025/06/17 19:20:58 by fortytwo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,47 +191,49 @@ int	checkmap(t_map *sl)
 	return (0);
 }
 
-void free_map(t_map *map)
+void free_path(t_map *map)
 {
-	int	i;
-
-	if (!map)
-		return;
-
-	if (map->map)
-	{
-		i = 0;
-		while (map->map[i])
-		{
-			free(map->map[i]);
-			i++;
-		}
-		free(map->map);
-		map->map = NULL;
-	}
-	if(map->path)
-	{
 		free(map->path->ea_path);
 		free(map->path->no_path);
 		free(map->path->so_path);
 		free(map->path->we_path);
-		free(map->path);		
-	}
+		free(map->path);
+}
+void free_game(t_game *game)
+{
+	int	i;
 
-	if (map->mlx && map->img)
-		mlx_destroy_image(map->mlx, map->img);
+	if (!game)
+		return;
 
-	if (map->mlx && map->win)
-		mlx_destroy_window(map->mlx, map->win);
-
-	if (map->mlx)
+	if (game->map)
 	{
-		mlx_destroy_display(map->mlx);
-		free(map->mlx);
-		map->mlx = NULL;
+		i = 0;
+		while (game->map->map[i])
+		{
+			free(game->map->map[i]);
+			i++;
+		}
+		free(game->map);
+		game->map = NULL;
+	}
+	if(game->map)
+	{
+		free_path(game->map);
 	}
 
-	// НЕ виконуємо free(map), бо це локальна змінна
+	if (game->mlx && game->img)
+		mlx_destroy_image(game->mlx, game->img);
+
+	if (game->mlx && game->win)
+		mlx_destroy_window(game->mlx, game->win);
+
+	if (game->mlx)
+	{
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+		game->mlx = NULL;
+	}
 }
 
 // int main(int argc, char **argv)
