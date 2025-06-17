@@ -1,7 +1,7 @@
 NAME = cub3d
-
+# -lreadline -fsanitize=address
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Iinclude
+CFLAGS = -Wall -Wextra -Werror -Iinclude -g 
 
 MLX_DIR = minilibx
 MLX_LIB = $(MLX_DIR)/libmlx.a
@@ -10,7 +10,7 @@ MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lbsd
 LIBFT_DIR = libft
 LIBFT_LIB = $(LIBFT_DIR)/libft.a
 
-PARSER = parsing/start.c
+PARSER = parsing/start.c parsing/checkmap.c parsing/get_map.c parsing/get_next_line.c parsing/read_path.c
 # somthing rename as you wish
 SRC = main.c $(PARSER) $(ENGINE)
 OBJ = $(SRC:.c=.o)

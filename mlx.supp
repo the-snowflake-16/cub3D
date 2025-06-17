@@ -1,0 +1,87 @@
+{
+   mlx_writev_bug
+   Memcheck:Param
+   writev(vector[...])
+   fun:writev
+   fun:*xcb*
+   fun:_XSend
+}
+
+{
+   X11_writev_uninit
+   Memcheck:Param
+   writev(vector[...])
+   fun:writev
+   fun:???
+   fun:xcb_writev
+   fun:_XSend
+   fun:_XReadEvents
+   fun:XWindowEvent
+   ...
+}
+{
+   libX11_writev_uninit
+   Memcheck:Param
+   writev(vector[0])
+   fun:writev
+   fun:xcb_writev
+   fun:_XSend
+   fun:_XReadEvents
+   ...
+}
+
+{
+   <mlx_leaks>
+   Memcheck:Leak
+   ...
+   fun:mlx_delete_image
+}
+
+{
+   <mlx_leaks>
+   Memcheck:Leak
+   ...
+   fun:mlx_key_hook
+}
+
+{
+   <mlx_leaks>
+   Memcheck:Leak
+   ...
+   fun:mlx_loop_hook
+}
+
+{
+   <mlx_leaks>
+   Memcheck:Leak
+   ...
+   fun:mlx_init
+}
+
+{
+   <mlx_leaks>
+   Memcheck:Leak
+   ...
+   fun:mlx_terminate
+}
+
+{
+   <mlx_leaks>
+   Memcheck:Leak
+   ...
+   fun:mlx_new_image
+}
+
+{
+   <mlx_leaks>
+   Memcheck:Leak
+   ...
+   fun:mlx_loop
+}
+
+{
+   <mlx_leaks>
+   Memcheck:Leak
+   ...
+   fun:mlx_put_pixel
+}

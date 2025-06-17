@@ -3,5 +3,6 @@
 int main(int argc, char **argv)
 {
     (void)argc;
-    create_map(argv);
+    init_window(argc, argv);
 }
+
