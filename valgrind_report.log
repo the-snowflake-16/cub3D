@@ -1,0 +1,595 @@
+==98264== Memcheck, a memory error detector
+==98264== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==98264== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==98264== Command: ./cub3d maps/level1.ber
+==98264== Parent PID: 7180
+==98264== 
+==98264== 
+==98264== Process terminating with default action of signal 2 (SIGINT)
+==98264==    at 0x4AD7494: poll (poll.c:29)
+==98264==    by 0x4BDC8C9: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==98264==    by 0x4BDE28B: xcb_wait_for_event (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==98264==    by 0x48C5257: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48AE4A7: XNextEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10C18A: mlx_loop (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AEB1: init_window (start.c:193)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== HEAP SUMMARY:
+==98264==     in use at exit: 190,984 bytes in 639 blocks
+==98264==   total heap usage: 4,667 allocs, 4,028 frees, 389,581 bytes allocated
+==98264== 
+==98264== 3 bytes in 1 blocks are still reachable in loss record 1 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x4A7034E: strdup (strdup.c:42)
+==98264==    by 0x48AF0DA: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 8 bytes in 1 blocks are still reachable in loss record 2 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x4A7034E: strdup (strdup.c:42)
+==98264==    by 0x48AC0CE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x487183F: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x4876C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x10BCA3: mlx_int_deal_shm (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10BF10: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 8 bytes in 1 blocks are still reachable in loss record 3 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x486FB16: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x48719F6: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x4876C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x10BCA3: mlx_int_deal_shm (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10BF10: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 10 bytes in 1 blocks are still reachable in loss record 4 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x4A7034E: strdup (strdup.c:42)
+==98264==    by 0x48AC0CE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x4921033: XkbUseExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48AFC72: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 16 bytes in 1 blocks are still reachable in loss record 5 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x4BDF46D: xcb_connect_to_fd (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==98264==    by 0x4BE00D9: xcb_connect_to_display_with_auth_info (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==98264==    by 0x48BE3C9: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48AF0FD: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 16 bytes in 1 blocks are still reachable in loss record 6 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48A656B: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48AF3D0: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 21 bytes in 1 blocks are still reachable in loss record 7 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48AF5D1: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 24 bytes in 1 blocks are still reachable in loss record 8 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x4871021: XextCreateExtension (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x48714C4: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x48719DF: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x4876C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x10BCA3: mlx_int_deal_shm (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10BF10: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 24 bytes in 1 blocks are still reachable in loss record 9 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x4A7034E: strdup (strdup.c:42)
+==98264==    by 0x48AC0CE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x487183F: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x4871502: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x48719DF: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x4876C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x10BCA3: mlx_int_deal_shm (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10BF10: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 24 bytes in 1 blocks are still reachable in loss record 10 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x4871A10: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x4876C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x10BCA3: mlx_int_deal_shm (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10BF10: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 29 bytes in 1 blocks are still reachable in loss record 11 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48A800C: _XUpdateAtomCache (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48AAFE6: XInternAtom (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BF02: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 32 bytes in 1 blocks are still reachable in loss record 12 of 61
+==98264==    at 0x484DB80: realloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x4BE3712: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==98264==    by 0x4BE380A: xcb_get_extension_data (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==98264==    by 0x4BE38CE: xcb_prefetch_maximum_request_length (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==98264==    by 0x4BE3945: xcb_get_maximum_request_length (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==98264==    by 0x48AF96A: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 32 bytes in 1 blocks are still reachable in loss record 13 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x4BDC257: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==98264==    by 0x4BDCA95: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==98264==    by 0x4BDCEEF: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==98264==    by 0x4BDDE6D: xcb_wait_for_reply (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==98264==    by 0x4BE385A: xcb_get_extension_data (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==98264==    by 0x4BE38CE: xcb_prefetch_maximum_request_length (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==98264==    by 0x4BE3945: xcb_get_maximum_request_length (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==98264==    by 0x48AF96A: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 32 bytes in 1 blocks are still reachable in loss record 14 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x4871812: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x4876C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x10BCA3: mlx_int_deal_shm (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10BF10: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 32 bytes in 1 blocks are still reachable in loss record 15 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x4871812: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x4871502: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x48719DF: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x4876C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x10BCA3: mlx_int_deal_shm (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10BF10: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 33 bytes in 1 blocks are still reachable in loss record 16 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48A800C: _XUpdateAtomCache (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48AAFE6: XInternAtom (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BEED: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 40 bytes in 1 blocks are still reachable in loss record 17 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48A8F79: XInitThreads (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x400571E: call_init.part.0 (dl-init.c:74)
+==98264==    by 0x4005823: call_init (dl-init.c:120)
+==98264==    by 0x4005823: _dl_init (dl-init.c:121)
+==98264==    by 0x401F59F: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+==98264==    by 0x1: ???
+==98264==    by 0x1FFEFFF822: ???
+==98264==    by 0x1FFEFFF82A: ???
+==98264== 
+==98264== 40 bytes in 1 blocks are still reachable in loss record 18 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48A8F96: XInitThreads (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x400571E: call_init.part.0 (dl-init.c:74)
+==98264==    by 0x4005823: call_init (dl-init.c:120)
+==98264==    by 0x4005823: _dl_init (dl-init.c:121)
+==98264==    by 0x401F59F: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+==98264==    by 0x1: ???
+==98264==    by 0x1FFEFFF822: ???
+==98264==    by 0x1FFEFFF82A: ???
+==98264== 
+==98264== 40 bytes in 1 blocks are still reachable in loss record 19 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48A8FB3: XInitThreads (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x400571E: call_init.part.0 (dl-init.c:74)
+==98264==    by 0x4005823: call_init (dl-init.c:120)
+==98264==    by 0x4005823: _dl_init (dl-init.c:121)
+==98264==    by 0x401F59F: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+==98264==    by 0x1: ???
+==98264==    by 0x1FFEFFF822: ???
+==98264==    by 0x1FFEFFF82A: ???
+==98264== 
+==98264== 40 bytes in 1 blocks are still reachable in loss record 20 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48A65B5: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48AF3D0: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 40 bytes in 1 blocks are still reachable in loss record 21 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48BE6F9: _XPollfdCacheInit (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48AF3E0: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 48 bytes in 1 blocks are still reachable in loss record 22 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48BE350: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48AF0FD: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 48 bytes in 1 blocks are still reachable in loss record 23 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48BE365: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48AF0FD: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 48 bytes in 1 blocks are still reachable in loss record 24 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48A65A4: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48AF3D0: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 48 bytes in 1 blocks are still reachable in loss record 25 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48A65C5: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48AF3D0: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 72 bytes in 1 blocks are still reachable in loss record 26 of 61
+==98264==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48AF48C: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 112 bytes in 1 blocks are still reachable in loss record 27 of 61
+==98264==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48BE255: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48AF0FD: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 112 bytes in 1 blocks are still reachable in loss record 28 of 61
+==98264==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48AF751: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 128 bytes in 1 blocks are still reachable in loss record 29 of 61
+==98264==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48AF67F: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 128 bytes in 1 blocks are still reachable in loss record 30 of 61
+==98264==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48AC0BE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x4921033: XkbUseExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48AFC72: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 128 bytes in 1 blocks are still reachable in loss record 31 of 61
+==98264==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48AC0BE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x487183F: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x4876C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x10BCA3: mlx_int_deal_shm (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10BF10: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 128 bytes in 1 blocks are still reachable in loss record 32 of 61
+==98264==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48AC0BE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x487183F: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x4871502: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x48719DF: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x4876C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x10BCA3: mlx_int_deal_shm (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10BF10: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 136 bytes in 1 blocks are still reachable in loss record 33 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x10BE4E: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 146 bytes in 1 blocks are still reachable in loss record 34 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48AFCE1: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 152 bytes in 1 blocks are still reachable in loss record 35 of 61
+==98264==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x492121E: XkbUseExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48AFC72: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 160 bytes in 1 blocks are still reachable in loss record 36 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x489D938: XCreateGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48AF9EC: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 160 bytes in 1 blocks are still reachable in loss record 37 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x489D938: XCreateGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10C079: mlx_new_window (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE8C: init_window (start.c:188)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 168 bytes in 1 blocks are still reachable in loss record 38 of 61
+==98264==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48AFB34: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 192 bytes in 1 blocks are still reachable in loss record 39 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48A6586: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48AF3D0: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 208 bytes in 1 blocks are still reachable in loss record 40 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x486FAC9: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x48719F6: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x4876C44: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==98264==    by 0x10BCA3: mlx_int_deal_shm (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10BF10: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 208 bytes in 1 blocks are still reachable in loss record 41 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48C051D: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C39AE: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C51B0: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C552B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10C375: mlx_int_wait_first_expose (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10C0B5: mlx_new_window (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE8C: init_window (start.c:188)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 208 bytes in 1 blocks are still reachable in loss record 42 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48C051D: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C39AE: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C3A51: _XEventsQueued (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x489E885: XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10C65F: mlx_int_new_xshm_image (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10C810: mlx_new_image (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AB14: draw_tile (start.c:99)
+==98264==    by 0x10AC94: draw_map (start.c:131)
+==98264==    by 0x10AEA5: init_window (start.c:192)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 208 bytes in 1 blocks are still reachable in loss record 43 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48C051D: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C39AE: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C3A51: _XEventsQueued (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x489E885: XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10AB9D: draw_tile (start.c:104)
+==98264==    by 0x10AD2F: draw_map (start.c:135)
+==98264==    by 0x10AEA5: init_window (start.c:192)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 248 bytes in 1 blocks are still reachable in loss record 44 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x10BA1B: get_map (get_map.c:300)
+==98264==    by 0x10AE52: init_window (start.c:166)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 416 bytes in 2 blocks are still reachable in loss record 45 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48C051D: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C39AE: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C51B0: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C5507: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10C375: mlx_int_wait_first_expose (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10C0B5: mlx_new_window (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE8C: init_window (start.c:188)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 512 bytes in 1 blocks are still reachable in loss record 46 of 61
+==98264==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48AAE7A: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48AAF1E: XInternAtom (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BEED: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 570 bytes in 30 blocks are still reachable in loss record 47 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x10BB15: get_map (get_map.c:319)
+==98264==    by 0x10AE52: init_window (start.c:166)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 936 bytes in 1 blocks are still reachable in loss record 48 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x10BFDF: mlx_new_window (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE8C: init_window (start.c:188)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 1,456 bytes in 7 blocks are still reachable in loss record 49 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48C051D: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C39AE: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C51F9: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C5507: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10C375: mlx_int_wait_first_expose (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10C0B5: mlx_new_window (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE8C: init_window (start.c:188)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 1,456 bytes in 7 blocks are still reachable in loss record 50 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48C051D: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C39AE: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C571C: _XReply (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C5AA4: XSync (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10C5B8: mlx_int_new_xshm_image (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10C810: mlx_new_image (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AB14: draw_tile (start.c:99)
+==98264==    by 0x10ACE3: draw_map (start.c:133)
+==98264==    by 0x10AEA5: init_window (start.c:192)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 1,664 bytes in 8 blocks are still reachable in loss record 51 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48C051D: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C39AE: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C571C: _XReply (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C5AA4: XSync (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10C5B8: mlx_int_new_xshm_image (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10C810: mlx_new_image (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AB14: draw_tile (start.c:99)
+==98264==    by 0x10AC94: draw_map (start.c:131)
+==98264==    by 0x10AEA5: init_window (start.c:192)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 2,080 bytes in 10 blocks are still reachable in loss record 52 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48C051D: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C39AE: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C51F9: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C552B: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10C375: mlx_int_wait_first_expose (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10C0B5: mlx_new_window (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE8C: init_window (start.c:188)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 4,720 bytes in 1 blocks are still reachable in loss record 53 of 61
+==98264==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48AF0C6: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 8,276 bytes in 1 blocks are still reachable in loss record 54 of 61
+==98264==    at 0x484DB80: realloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x4BDF678: xcb_connect_to_fd (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==98264==    by 0x4BE00D9: xcb_connect_to_display_with_auth_info (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==98264==    by 0x48BE3C9: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48AF0FD: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 16,384 bytes in 1 blocks are still reachable in loss record 55 of 61
+==98264==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48AF42D: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 18,816 bytes in 2 blocks are still reachable in loss record 56 of 61
+==98264==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48AF7E0: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 19,760 bytes in 95 blocks are still reachable in loss record 57 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48C051D: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C39AE: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C3A51: _XEventsQueued (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x489E885: XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10AB9D: draw_tile (start.c:104)
+==98264==    by 0x10AC94: draw_map (start.c:131)
+==98264==    by 0x10AEA5: init_window (start.c:192)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 20,592 bytes in 99 blocks are still reachable in loss record 58 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48C051D: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C39AE: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C3A51: _XEventsQueued (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x489E885: XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10AB9D: draw_tile (start.c:104)
+==98264==    by 0x10ACE3: draw_map (start.c:133)
+==98264==    by 0x10AEA5: init_window (start.c:192)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 21,176 bytes in 1 blocks are still reachable in loss record 59 of 61
+==98264==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x4BDF396: xcb_connect_to_fd (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==98264==    by 0x4BE00D9: xcb_connect_to_display_with_auth_info (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==98264==    by 0x48BE3C9: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48AF0FD: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10BE66: mlx_init (in /home/fortytwo/cub3D/cub3d)
+==98264==    by 0x10AE5C: init_window (start.c:184)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 29,328 bytes in 141 blocks are still reachable in loss record 60 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48C051D: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C39AE: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C3A51: _XEventsQueued (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x489E885: XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10AB8A: draw_tile (start.c:103)
+==98264==    by 0x10ACE3: draw_map (start.c:133)
+==98264==    by 0x10AEA5: init_window (start.c:192)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== 39,104 bytes in 188 blocks are still reachable in loss record 61 of 61
+==98264==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==98264==    by 0x48C051D: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C39AE: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x48C3A51: _XEventsQueued (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x489E885: XFlush (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==98264==    by 0x10AB8A: draw_tile (start.c:103)
+==98264==    by 0x10AC94: draw_map (start.c:131)
+==98264==    by 0x10AEA5: init_window (start.c:192)
+==98264==    by 0x10A80C: main (main.c:6)
+==98264== 
+==98264== LEAK SUMMARY:
+==98264==    definitely lost: 0 bytes in 0 blocks
+==98264==    indirectly lost: 0 bytes in 0 blocks
+==98264==      possibly lost: 0 bytes in 0 blocks
+==98264==    still reachable: 190,984 bytes in 639 blocks
+==98264==         suppressed: 0 bytes in 0 blocks
+==98264== 
+==98264== For lists of detected and suppressed errors, rerun with: -s
+==98264== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)

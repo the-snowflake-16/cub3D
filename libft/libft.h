@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thrychka <thrychka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fortytwo <fortytwo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:52:32 by thrychka          #+#    #+#             */
-/*   Updated: 2025/04/11 17:50:17 by thrychka         ###   ########.fr       */
+/*   Updated: 2025/06/15 21:20:54 by fortytwo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 
 # define LIBFT_H
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 typedef struct s_list
 {
