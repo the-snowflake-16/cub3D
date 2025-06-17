@@ -74,4 +74,10 @@ typedef struct s_game
 
 void create_map(char **argv);
 
+float	degree_to_radians(float degree);
+void	raycast(t_game *g);
+int	check_if_c(char *m, char c, int n0, int n1);
+int atoi_cub(const char *nptr, long *nbr);
+
+
 #endif
