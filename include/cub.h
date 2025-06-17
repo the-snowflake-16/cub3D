@@ -32,7 +32,7 @@ typedef struct s_ray
 	float	cos;
 	float	sin;
 	float	hfov;
-	float	lim;
+	float	limше;
 	int		precision;
 }				t_ray;
 
