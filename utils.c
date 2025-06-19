@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 t_img	*mlx_load_img(void *ptr, char *path)
 {
