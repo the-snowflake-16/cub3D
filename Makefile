@@ -1,42 +1,53 @@
-NAME = cub3d
-# -lreadline -fsanitize=address
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Iinclude -g 
+NAME	= cub3d
 
-MLX_DIR = minilibx
-MLX_LIB = $(MLX_DIR)/libmlx.a
-MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lbsd
+MLX			= libmlx.a
 
-LIBFT_DIR = libft
-LIBFT_LIB = $(LIBFT_DIR)/libft.a
+SRCS		= maps/* \
+			  parsing/* \
+			  textures/* 
+			  #raycasting.c \
+			  utils.c
+			  
 
-PARSER = parsing/start.c parsing/checkmap.c parsing/get_map.c parsing/get_next_line.c parsing/read_path.c
-# somthing rename as you wish
-SRC = main.c $(PARSER) $(ENGINE)
-OBJ = $(SRC:.c=.o)
+CC			= cc
+
+CFLAGS		= -Wall -Wextra -Werror
+
+UNAME		:= $(shell uname)
+
+ifeq ($(UNAME), Darwin)
+MLX_DIR		= mlx_macos
+MLX_INC		= -Imlx_macos
+MLX_LIB		= mlx_macos/$(MLX)
+MLX_FLAGS	= -Lmlx_macos -lmlx -framework OpenGL -framework AppKit
+endif
+
+ifeq ($(UNAME), Linux)
+MLX_DIR		= mlx_linux
+MLX_INC		= -Imlx_linux
+MLX_LIB		= mlx_linux/$(MLX)
+MLX_FLAGS	= -Lmlx_linux -lmlx -lmlx_Linux -lXext -lX11 -lm
+endif
 
 all: $(NAME)
 
 $(MLX_LIB):
-	make -C $(MLX_DIR)
+	$(MAKE) -C $(MLX_DIR)
 
-$(LIBFT_LIB):
-	make -C $(LIBFT_DIR)
-
-$(NAME): $(MLX_LIB) $(LIBFT_LIB) $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(MLX_FLAGS) $(LIBFT_LIB)
-
-%.o: %.c cub3d.h
-	$(CC) $(CFLAGS) -c $< -o $@
+$(NAME): $(MLX_LIB)
+	@echo "cub3d COMPILATION..."
+	$(MAKE) -C $(MLX_DIR)
+	$(CC) $(CFLAGS) -g3 -Ofast -o $(NAME) $(SRCS) $(MLX_INC) $(MLX_FLAGS)
+	@echo "cub3d SUCCESSFULLY CREATED!"
 
 clean:
-	rm -f $(OBJ)
-	make -C $(MLX_DIR) clean
-	make -C $(LIBFT_DIR) clean
+	@echo "DELETING OF LAST VERSION..."
+	$(MAKE) -C $(MLX_DIR) clean
+	rm -rf cub3d.dSYM >/dev/null 2>&1
 
 fclean: clean
 	rm -f $(NAME)
-	make -C $(LIBFT_DIR) fclean
+	rm -f $(MLX_LIB)
 
 re: fclean all
 
