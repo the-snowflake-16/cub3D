@@ -6,7 +6,7 @@
 /*   By: fortytwo <fortytwo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:20:12 by vmileshk          #+#    #+#             */
-/*   Updated: 2025/06/19 15:11:57 by fortytwo         ###   ########.fr       */
+/*   Updated: 2025/06/19 16:28:47 by fortytwo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ int	check_exten(int argc, char *str)
 	
 	if (argc != 2)
     {
-        // write(2, "Error\nIncorect number of arguments.\n", 37);
-        // write(2, "Usage: ./cub3d map/map_name.ber\n", 32);
+        write(2, "Error\nIncorect number of arguments.\n", 37);
+        write(2, "Usage: ./cub3d map/map_name.ber\n", 32);
         return 1;
     }
 	len = ft_strlen(str);
 	if (len < 5 || ft_strncmp(str + len - 4, ".ber", 4) != 0)
 	{
-		// write(2, "Not correct file extension .ber\n", 33);
+		write(2, "Not correct file extension .ber\n", 33);
 		return (1);
 	}
 	return (0);
