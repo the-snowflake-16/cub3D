@@ -86,6 +86,16 @@ typedef struct s_map
     t_path      *path;
 } t_map;
 
+typedef struct s_player
+{
+	float	x;
+	float	y;
+	char	dir;
+	float	speed;
+	int		door_cooldown;
+	t_key	keys;
+}				t_player;
+
 typedef struct s_game
 {
 	int			fd;
