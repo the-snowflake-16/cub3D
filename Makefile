@@ -1,12 +1,10 @@
 NAME	= cub3d
 
 MLX			= libmlx.a
+LIBFT		= libft/libft.a
 
-SRCS		= maps/* \
-			  parsing/* \
-			  textures/* 
-			  #raycasting.c \
-			  utils.c
+SRCS		= $(wildcard parsing/*.c)  main.c
+				# utils.c raycasting.c
 			  
 
 CC			= cc
@@ -29,15 +27,17 @@ MLX_LIB		= mlx_linux/$(MLX)
 MLX_FLAGS	= -Lmlx_linux -lmlx -lmlx_Linux -lXext -lX11 -lm
 endif
 
+LIBFT_INC	= -Ilibft/includes
+
 all: $(NAME)
 
 $(MLX_LIB):
-	$(MAKE) -C $(MLX_DIR)  > /dev/null 2>&1
+	$(MAKE) -C $(MLX_DIR)
 
 $(NAME): $(MLX_LIB)
 	@echo "cub3d COMPILATION..."
 	@$(MAKE) -C $(MLX_DIR)
-	@$(CC) $(CFLAGS) -g3 -Ofast -o $(NAME) $(SRCS) $(MLX_INC) $(MLX_FLAGS)
+	$(CC) $(CFLAGS) -o $(NAME) $(SRCS) $(MLX_INC) $(LIBFT_INC) $(MLX_FLAGS) $(LIBFT)
 	@echo "cub3d SUCCESSFULLY CREATED!"
 
 clean:

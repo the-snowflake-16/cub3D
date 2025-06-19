@@ -6,7 +6,7 @@
 /*   By: fortytwo <fortytwo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:20:12 by vmileshk          #+#    #+#             */
-/*   Updated: 2025/06/16 10:48:24 by fortytwo         ###   ########.fr       */
+/*   Updated: 2025/06/19 15:11:57 by fortytwo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-void	ft_error(const char *msg)
-{
-	write(2, "Error\n", 6);
-	write(2, msg, ft_strlen(msg));
-	write(2, "\n", 1);
-	// if (cub)
-	// 	free_all(cub);
-	exit(1);
-}
+// void	ft_error(const char *msg)
+// {
+// 	write(2, "Error\n", 6);
+// 	write(2, msg, ft_strlen(msg));
+// 	write(2, "\n", 1);
+// 	// if (cub)
+// 	// 	free_all(cub);
+// 	exit(1);
+// }
 
 
 int	check_exten(int argc, char *str)
@@ -32,14 +32,14 @@ int	check_exten(int argc, char *str)
 	
 	if (argc != 2)
     {
-        write(2, "Error\nIncorect number of arguments.\n", 37);
-        write(2, "Usage: ./cub3d map/map_name.ber\n", 32);
+        // write(2, "Error\nIncorect number of arguments.\n", 37);
+        // write(2, "Usage: ./cub3d map/map_name.ber\n", 32);
         return 1;
     }
 	len = ft_strlen(str);
 	if (len < 5 || ft_strncmp(str + len - 4, ".ber", 4) != 0)
 	{
-		write(2, "Not correct file extension .ber\n", 33);
+		// write(2, "Not correct file extension .ber\n", 33);
 		return (1);
 	}
 	return (0);
