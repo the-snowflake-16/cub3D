@@ -11,6 +11,12 @@ CC			= cc
 
 CFLAGS		= -Wall -Wextra -Werror
 
+GREEN	= \033[0;32m
+RED		= \033[0;31m
+YELLOW	= \033[0;33m
+BLUE	= \033[0;34m
+RESET	= \033[0m
+
 UNAME		:= $(shell uname)
 
 ifeq ($(UNAME), Darwin)
@@ -35,13 +41,13 @@ $(MLX_LIB):
 	$(MAKE) -C $(MLX_DIR)
 
 $(NAME): $(MLX_LIB)
-	@echo "cub3d COMPILATION..."
+	@echo "$(YELLOW)[INFO]$(RESET) CUB3D COMPILATION...$(RESET)"
 	@$(MAKE) -C $(MLX_DIR)
 	$(CC) $(CFLAGS) -o $(NAME) $(SRCS) $(MLX_INC) $(LIBFT_INC) $(MLX_FLAGS) $(LIBFT)
-	@echo "cub3d SUCCESSFULLY CREATED!"
+	@echo "$(GREEN)[SUCCESS] CUB3D SUCCESSFULLY CREATED!$(RESET)"
 
 clean:
-	@echo "DELETING OF LAST VERSION..."
+	@echo "$(RED)DELETING OF LAST VERSION...$(RESET)"
 	@$(MAKE) -C $(MLX_DIR) clean
 	rm -rf cub3d.dSYM >/dev/null 2>&1
 
