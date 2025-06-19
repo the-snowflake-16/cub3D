@@ -86,6 +86,17 @@ typedef struct s_map
     t_path      *path;
 } t_map;
 
+typedef struct s_key
+{
+	int	w_pressed;
+	int	a_pressed;
+	int	s_pressed;
+	int	d_pressed;
+	int	left_pressed;
+	int	right_pressed;
+}				t_key;
+
+
 typedef struct s_player
 {
 	float	x;
