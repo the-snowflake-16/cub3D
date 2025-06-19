@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../include/cub3d.h"
 
 int get_path(t_path *path, char *filename)
 {
