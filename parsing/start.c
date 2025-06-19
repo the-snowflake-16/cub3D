@@ -1,4 +1,4 @@
-#include "cub.h"
+#include "../include/cub3d.h"
 
 void draw_tile(t_game *game, int x, int y, int color)
 {
