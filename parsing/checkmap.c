@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../include/cub3d.h"
 
 #include <unistd.h>
 #include <stdlib.h>
