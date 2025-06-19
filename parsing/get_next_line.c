@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../include/cub3d.h"
 
 static int	has_newline(const char *s)
 {
