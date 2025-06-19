@@ -111,7 +111,9 @@ typedef struct s_game
 	// t_tex		tex;
 	t_ray		ray;
     t_map       *map;
-	// t_player	pl;
+	t_player	pl;
+	float		x;
+	float		y;
 }				t_game;
 
 
