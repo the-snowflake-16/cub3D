@@ -32,17 +32,17 @@ endif
 all: $(NAME)
 
 $(MLX_LIB):
-	$(MAKE) -C $(MLX_DIR)
+	$(MAKE) -C $(MLX_DIR)  > /dev/null 2>&1
 
 $(NAME): $(MLX_LIB)
 	@echo "cub3d COMPILATION..."
-	$(MAKE) -C $(MLX_DIR)
-	$(CC) $(CFLAGS) -g3 -Ofast -o $(NAME) $(SRCS) $(MLX_INC) $(MLX_FLAGS)
+	@$(MAKE) -C $(MLX_DIR)
+	@$(CC) $(CFLAGS) -g3 -Ofast -o $(NAME) $(SRCS) $(MLX_INC) $(MLX_FLAGS)
 	@echo "cub3d SUCCESSFULLY CREATED!"
 
 clean:
 	@echo "DELETING OF LAST VERSION..."
-	$(MAKE) -C $(MLX_DIR) clean
+	@$(MAKE) -C $(MLX_DIR) clean
 	rm -rf cub3d.dSYM >/dev/null 2>&1
 
 fclean: clean
