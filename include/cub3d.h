@@ -7,29 +7,11 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdlib.h>
-// # include "keycodes.h"
+# include "keycodes.h"
 // # include <mlx.h>
 // # include "get_next_line.h"   i don`t have get_next_line in myown laptop so i created new littel one in parser if you need you can use or add yor get_nex_line 
 // # include "my_mlx.h"
 # include <math.h>
-
-# if defined(__linux__)
-#  define ADVANCE 119
-#  define BACK 115
-#  define RIGHT 100
-#  define LEFT 97
-#  define ESC 65307
-#  define RED_BUTTON 79
-#  define CLOSERED 33
-# elif defined(__APPLE__)
-#  define ADVANCE 13
-#  define BACK 1
-#  define RIGHT 2
-#  define LEFT 0
-#  define ESC 53
-#  define RED_BUTTON 79
-#  define CLOSERED 17
-# endif
 
 # ifndef WIN_H
 #  define WIN_H 480
