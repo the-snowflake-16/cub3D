@@ -33,7 +33,7 @@ void draw_map(t_game *game)
 
 int close_window(t_game *game)
 {
-    free_game(game);
+    free_game_error(game);
     exit(0);
     return (0);
 }
@@ -43,30 +43,33 @@ void init_window(int argc, char **argv)
     t_game game;
     t_map map;
     game.map = &map;
-
+    (void)game;
     if ((check_exten(argc, argv[1]) == 1) || (get_map(&map, argv[1]) == 1))
         return;
     map.path = malloc(sizeof(t_path));
     if (!map.path)
         return;
-    map.path->ceiling_color = -1;
-    map.path->floor_color = -1;
-    get_path(map.path, argv[1]);
-    get_color(map.path, argv[1]);
-
-    // printf("%d\n", map.path->ceiling_color);
-    // printf("%d\n", map.path->floor_color);
-    // free_map(&map);
-    game.mlx = mlx_init();
-    if (!game.mlx)
+    if(get_path(&game, argv[1]))
         return;
-
-    game.win = mlx_new_window(game.mlx, map.col * TILE_SIZE, map.row * TILE_SIZE, "Cub3D");
-    if (!game.win)
+    if (get_color(&game, argv[1]))
         return;
-    draw_map(&game);
-    mlx_hook(game.win, 17, 0, close_window, &map);
-    mlx_loop(game.mlx);
-    // free_map(&map);
-    mlx_destroy_display(game.mlx);
+    printf("%s\n", map.path->ea_path);
+    printf("%s\n", map.path->no_path);   
+    printf("%s\n", map.path->we_path);
+    printf("%s\n", map.path->so_path);
+    printf("%d\n", map.path->ceiling_color);
+    printf("%d\n", map.path->floor_color);
+    free_game_error(&game);
+    // game.mlx = mlx_init();
+    // if (!game.mlx)
+    //     return;
+
+    // game.win = mlx_new_window(game.mlx, map.col * TILE_SIZE, map.row * TILE_SIZE, "Cub3D");
+    // if (!game.win)
+    //     return;
+    // draw_map(&game);
+    // mlx_hook(game.win, 17, 0, close_window, &game);
+    // mlx_loop(game.mlx);
+    // // free_map(&map);
+    // mlx_destroy_display(game.mlx);
 }

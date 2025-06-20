@@ -52,6 +52,12 @@ typedef struct s_path
 	char *ea_path;
 	int floor_color;
 	int ceiling_color;
+	int no_exist;
+	int so_exist;
+	int we_exist;
+	int ea_exist;
+	int f_exist;
+	int c_exist;
 } t_path;
 
 typedef struct s_map
@@ -132,12 +138,18 @@ void init_window(int argc, char **argv)
 
 /*..parsing/get_map.c */
 int	get_map(t_map *sl, char *filename);
-void free_game(t_game *game);
+void free_game_error(t_game *game);
 
 /* ..parsing/get_next_line.c */
 char	*get_next_line(int fd); 
 
 /* ..parsing/read_path.c */
-int get_path(t_path *path, char *filename); 
-int get_color(t_path *path, char *filename);
+int get_path(t_game *game, char *filename); 
+int get_color(t_game *game, char *filename);
+
+/* ..parsing/utils.c */
+int	numberblank(char *str);
+
+/* ..parsing_error.c */ 
+int	ft_error(t_game *game, const char *msg);
 #endif
