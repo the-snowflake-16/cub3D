@@ -6,7 +6,7 @@
 /*   By: fortytwo <fortytwo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:20:12 by vmileshk          #+#    #+#             */
-/*   Updated: 2025/06/19 16:28:47 by fortytwo         ###   ########.fr       */
+/*   Updated: 2025/06/20 11:42:43 by fortytwo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-// void	ft_error(const char *msg)
-// {
-// 	write(2, "Error\n", 6);
-// 	write(2, msg, ft_strlen(msg));
-// 	write(2, "\n", 1);
-// 	// if (cub)
-// 	// 	free_all(cub);
-// 	exit(1);
-// }
+
 
 
 int	check_exten(int argc, char *str)
@@ -37,7 +29,7 @@ int	check_exten(int argc, char *str)
         return 1;
     }
 	len = ft_strlen(str);
-	if (len < 5 || ft_strncmp(str + len - 4, ".ber", 4) != 0)
+	if (len < 5 || ft_strncmp(str + len - 4, ".cub", 4) != 0)
 	{
 		write(2, "Not correct file extension .ber\n", 33);
 		return (1);

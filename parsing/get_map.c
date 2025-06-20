@@ -6,7 +6,7 @@
 /*   By: fortytwo <fortytwo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:20:12 by vmileshk          #+#    #+#             */
-/*   Updated: 2025/06/17 19:20:58 by fortytwo         ###   ########.fr       */
+/*   Updated: 2025/06/19 19:06:42 by fortytwo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,7 @@
 // 	return (0);
 // }
 
-int	numberblank(char *str)
-{
-	int	index;
 
-	index = 0;
-	while (str[index] == '\t' || str[index] == '\r'
-		|| str[index] == '\v' || str[index] == ' ')
-		index++;
-	return (index);
-}
 int	get_line(t_map *sl, char *line, int row)
 {	
 	int	index = 0;

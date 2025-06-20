@@ -3,13 +3,13 @@ NAME	= cub3d
 MLX			= libmlx.a
 LIBFT		= libft/libft.a
 
-SRCS		= $(wildcard parsing/*.c)  main.c
+SRCS		= parsing/*.c  main.c
 				# utils.c raycasting.c
 			  
 
 CC			= cc
 
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -g
 
 GREEN	= \033[0;32m
 RED		= \033[0;31m
