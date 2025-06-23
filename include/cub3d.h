@@ -44,6 +44,13 @@ typedef struct s_ray
 	int		precision;
 }				t_ray;
 
+typedef struct s_map_state
+{
+	int	in_map;
+	int	map_ended;
+	int	row_count;
+}	t_map_state;
+
 typedef struct s_path
 {
 	char *no_path;
@@ -63,14 +70,14 @@ typedef struct s_path
 typedef struct s_map
 {
     char **map;
+	char **copy;
+	int fd;
+	char *l;
     int row;
     int col;
     int x;
     int y;
-    int player;
-    double			casetotal;
-    int				player_x;
-	int				player_y;
+    int player_count;
     t_path      *path;
 } t_map;
 
@@ -97,13 +104,13 @@ typedef struct s_player
 
 typedef struct s_game
 {
-	int			fd;
-	int			height;
-	int			width;
-	int			mouse_x;
-	int			rate;
-	int			neg;
-	long		nframes;
+	int				player_x;
+	int				player_y;
+	// int			fd;
+	// int			mouse_x;
+	// int			rate;
+	// int			neg;
+	// long		nframes;
 	void		*mlx;
 	void		*win;
     void        *img;
@@ -115,41 +122,79 @@ typedef struct s_game
 	// t_img		miniview;
 	// t_img		*scope;
 	// t_tex		tex;
-	t_ray		ray;
+	// t_ray		ray;
     t_map       *map;
-	t_player	pl;
-	float		x;
-	float		y;
+	// t_player	pl;
+	// float		x;
+	// float		y;
 }				t_game;
 
 
-/* ..parsing/checkmap.c */
-int	check_exten(int argc, char *str);
+
 
 float	degree_to_radians(float degree);
 void	raycast(t_game *g);
 int	check_if_c(char *m, char c, int n0, int n1);
 int atoi_cub(const char *nptr, long *nbr);
 
+/* ..parsing/checkmap.c */
+int	check_exten(int argc, char *str);
+int	incorect_char(t_game *g);
+char	*pad_line_with_spaces(char *line, size_t max_len);
+void	add_space(t_map *map);
+char	**copy_map(char **map, int height);
 
-/* ..parsing/start.c */
-void init_window(int argc, char **argv)
-;
+/* check_valid_map.c */ 
+int is_map_full(t_game *g, t_map *map);
+int is_map_closed_by_walls(t_game *g);
+
+/* ..parsing_error_and_free.c */ 
+void	free_split(char **arr);
+int	ft_error(t_game *game, const char *msg);
+void	free_map_array(char **map);
+void	free_game_map(t_game *game);
+
+/*..parsing/get_color.c */
+int	get_color(t_game *game, char *filename);
 
 /*..parsing/get_map.c */
-int	get_map(t_map *sl, char *filename);
-void free_game_error(t_game *game);
+int	get_map(t_map *map, char *filename);
+
+/*..parsing/get_map_utils.c */
+int	count_row(t_map *map, int fd);
+int	is_line_map_data(char *line);
+void	process_map_line(t_map *m, char *line, t_map_state *state);
+int	count_map_rows(t_map *m, char *file, int *row_count);
 
 /* ..parsing/get_next_line.c */
 char	*get_next_line(int fd); 
 
+/* ..parsing/parsing.c */
+void	init_parser(int argc, char **argv);
+
 /* ..parsing/read_path.c */
-int get_path(t_game *game, char *filename); 
-int get_color(t_game *game, char *filename);
+char	*trim_newline(char *str);
+void	init_path(t_path *path);
+int	file_exists(const char *filepath);
+int	check_path_extension(t_game *game, char *path, char *dir);
+int chech_exist(t_game *game, t_path *path); 
+
+/* ..parsing_error.c */ 
+int	count_rdb(char **rgb);
+int	parse_color(t_game *g, char *line);
+int	count_color_exist(t_game *game);
+int	get_color(t_game *game, char *filename);
+
+/* ..errors_and_find_p.c */
+int forbedden(t_game *g);
+int error_map(t_game *g);
+int	find_player(t_game *g);
 
 /* ..parsing/utils.c */
 int	numberblank(char *str);
+int	str_len(const char *s);
+int	allow_char(char c);
+int	count_len_row(t_map *map);
+int	is_empty_line(char *line);
 
-/* ..parsing_error.c */ 
-int	ft_error(t_game *game, const char *msg);
 #endif

@@ -1,94 +1,139 @@
-// /* ************************************************************************** */
-// /*                                                                            */
-// /*                                                        :::      ::::::::   */
-// /*   parsing.c                                          :+:      :+:    :+:   */
-// /*                                                    +:+ +:+         +:+     */
-// /*   By: fortytwo <fortytwo@student.42.fr>          +#+  +:+       +#+        */
-// /*                                                +#+#+#+#+#+   +#+           */
-// /*   Created: 2024/09/26 11:20:12 by vmileshk          #+#    #+#             */
-// /*   Updated: 2025/06/19 14:44:21 by fortytwo         ###   ########.fr       */
-// /*                                                                            */
-// /* ************************************************************************** */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fortytwo <fortytwo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/23 11:55:46 by fortytwo          #+#    #+#             */
+/*   Updated: 2025/06/23 12:02:06 by fortytwo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// // #include "../inc/so_long.h"
+#include "../include/cub3d.h"
 
-// int	parsing(t_long *sl, char *argv)
-// {
-// 	check_exten(argv, sl);
-// 	get_x_y(sl, argv);
-// 	map_memmory(sl);
-// 	get_map(sl, argv);
-// 	checkmap(sl);
-// 	return (0);
-// }
+int	check_path(t_game *game)
+{
+	t_path	*path;
 
-// int	get_x_y(t_long *sl, char *filename)
-// {
-// 	char	*line;
-// 	int		fd;
-// 	int		ret;
+	if (!game || !game->map || !game->map->path)
+		return (ft_error(game, "Missing path structure"));
+	path = game->map->path;
+	if (path->no_exist > 1 || path->so_exist > 1
+		|| path->we_exist > 1 || path->ea_exist > 1)
+		return (ft_error(game, "Error texture"));
+	if (!path->no_path || !path->so_path
+		|| !path->we_path || !path->ea_path)
+		return (ft_error(game, "Missing texture path"));
+	if (file_exists(path->no_path))
+		return (ft_error(game, "NO texture file missing"));
+	if (file_exists(path->so_path))
+		return (ft_error(game, "SO texture file missing"));
+	if (file_exists(path->we_path))
+		return (ft_error(game, "WE texture file missing"));
+	if (file_exists(path->ea_path))
+		return (ft_error(game, "EA texture file missing"));
+	return (chech_exist(game, path));
+}
 
-// 	fd = open(filename, O_RDONLY);
-// 	ret = get_next_line(fd, &line);
-// 	sl->oldx = ft_strlen(line);
-// 	while (line[numberblank(line)] == '1' || line[numberblank(line)] == '0')
-// 	{
-// 		sl->x = ft_strlen(line);
-// 		if (sl->x != sl->oldx)
-// 			ft_error(sl, "Map isn't rectangular");
-// 		sl->oldx = sl->x;
-// 		if (ret != -1)
-// 			free(line);
-// 		ret = get_next_line(fd, &line);
-// 		sl->y++;
-// 	}
-// 	if (sl->y == 0 || sl->x == 0)
-// 		ft_error(sl, "Map isn't well formated");
-// 	sl->yscreen = sl->y * 64;
-// 	free(line);
-// 	sl->xscreen = sl->x * 64;
-// 	close(fd);
-// 	return (0);
-// }
+void	save_texture_path(t_path *path, char *tmp)
+{
+	if (!ft_strncmp(tmp, "NO", 2))
+	{
+		if (!path->no_path)
+			path->no_path = trim_newline(tmp + 3);
+		path->no_exist++;
+	}
+	else if (!ft_strncmp(tmp, "SO", 2))
+	{
+		if (!path->so_path)
+			path->so_path = trim_newline(tmp + 3);
+		path->so_exist++;
+	}
+	else if (!ft_strncmp(tmp, "WE", 2))
+	{
+		if (!path->we_path)
+			path->we_path = trim_newline(tmp + 3);
+		path->we_exist++;
+	}
+	else if (!ft_strncmp(tmp, "EA", 2))
+	{
+		if (!path->ea_path)
+			path->ea_path = trim_newline(tmp + 3);
+		path->ea_exist++;
+	}
+}
 
-// char	replacechar(char c)
-// {
-// 	if (c == '0')
-// 		return ('a');
-// 	if (c == '1')
-// 		return ('1');
-// 	if (c == 'P')
-// 		return ('c');
-// 	if (c == 'E')
-// 		return ('d');
-// 	if (c == 'C')
-// 		return ('e');
-// 	return (0);
-// }
+int	get_path(t_game *game, char *filename)
+{
+	char	*tmp;
+	int		shift;
 
-// int	initvar(t_long *sl)
-// {
-// 	sl->keyboard[BACK] = 0;
-// 	sl->keyboard[RED_BUTTON] = 0;
-// 	sl->keyboard[ESC] = 0;
-// 	sl->keyboard[LEFT] = 0;
-// 	sl->keyboard[RIGHT] = 0;
-// 	sl->keyboard[ADVANCE] = 0;
-// 	sl->bpp = 0;
-// 	sl->casein = 0;
-// 	sl->casetotal = 0;
-// 	sl->y = 0;
-// 	sl->x = 0;
-// 	sl->collectible = 0;
-// 	sl->collectibletotal = 0;
-// 	sl->s_line = 0;
-// 	sl->maptofree = -1;
-// 	sl->move = 0;
-// 	sl->playerset = 0;
-// 	sl->collectibleset = 0;
-// 	sl->exitset = 0;
-// 	sl->lastplayer_x = -1;
-// 	sl->lastplayer_y = -1;
-// 	sl->mlx_ptr = NULL;
-// 	return (0);
-// }
+	if (!game || !game->map || !game->map->path)
+		return (ft_error(game, "Path structure not initialized"));
+	init_path(game->map->path);
+	game->map->fd = open(filename, O_RDONLY);
+	if (game->map->fd < 0)
+		return (ft_error(game, "Cannot open file"));
+	game->map->l = get_next_line(game->map->fd);
+	while (game->map->l)
+	{
+		if (!is_empty_line(game->map->l))
+		{
+			shift = numberblank(game->map->l);
+			tmp = game->map->l + shift;
+			save_texture_path(game->map->path, tmp);
+		}
+		free(game->map->l);
+		game->map->l = get_next_line(game->map->fd);
+	}
+	close(game->map->fd);
+	get_next_line(-1);
+	return (check_path(game));
+}
+
+int	init_game_data(t_game *game, char *filename)
+{
+	game->map->path = malloc(sizeof(t_path));
+	if (!game->map->path)
+		return (1);
+	if (get_path(game, filename))
+		return (1);
+	if (get_color(game, filename))
+		return (1);
+	if (incorect_char(game))
+		return (1);
+	add_space(game->map);
+	if (is_map_full(game, game->map))
+		return (1);
+	if (is_map_closed_by_walls(game))
+		return (1);
+	if (find_player(game))
+		return (1);
+	if (error_map(game))
+		return (1);
+	return (0);
+}
+
+void	init_parser(int argc, char **argv)
+{
+	t_game	game;
+	t_map	map;
+	int		i;
+
+	game.map = &map;
+	if ((check_exten(argc, argv[1]) == 1)
+		|| (get_map(&map, argv[1]) == 1))
+		return ;
+	if (init_game_data(&game, argv[1]))
+		return ;
+	printf("%d\n", game.player_x);
+	printf("%d\n", game.player_y);
+	i = 0;
+	while (map.map[i])
+	{
+		printf("%s\n", map.map[i]);
+		i++;
+	}
+	free_game_map(&game);
+}

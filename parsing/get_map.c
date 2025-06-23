@@ -6,261 +6,92 @@
 /*   By: fortytwo <fortytwo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:20:12 by vmileshk          #+#    #+#             */
-/*   Updated: 2025/06/19 19:06:42 by fortytwo         ###   ########.fr       */
+/*   Updated: 2025/06/23 11:45:30 by fortytwo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
+void	init_memory(t_map *m, char *file)
+{
+	int	row_count;
 
-
-// char	replacechar(char c)
-// {
-// 	if (c == '0')
-// 		return ('a');
-// 	if (c == '1')
-// 		return ('1');
-// 	if (c == 'P')
-// 		return ('c');
-// 	if (c == 'E')
-// 		return ('d');
-// 	if (c == 'C')
-// 		return ('e');
-// 	return (0);
-// }
-
-
-int	get_line(t_map *sl, char *line, int row)
-{	
-	int	index = 0;
-
-	while (line[index])
-	{
-		// printf("%c", line[index]);
-		// sl->casetotal++;
-		sl->map[row][index] = line[index];
-		// if (line[index] == 'P')
-		// {
-		// 	sl->player++;
-		// 	sl->player_x = index;
-		// 	sl->player_y = nb;
-		// }
-		// // if (line[index] == 'E')
-		// // 	sl->exitset++;
-		// // if (line[index] == 'C')
-		// // 	sl->collectibletotal++;
-		// // if (line[index] != 'P' && line[index] != 'E' && line[index]
-		// // 	!= 'C' && line[index] != '1' && line[index] != '0')
-		// // 	ft_error(sl, "Wrong character on the map");
-		index++;
-	}
-	sl->map[row][index] = '\0';
-	return (0);
+	if (count_map_rows(m, file, &row_count))
+		return ;
+	m->row = row_count;
+	m->map = malloc(sizeof(char *) * (row_count + 1));
+	if (!m->map)
+		return ;
 }
 
-int count_row(t_map *map, int fd)
+int	copy_map_line(t_map *m, char *line, int row)
 {
-	char *line;
-	int nb = 0;
-	line = get_next_line(fd);
-	while (line)
-	{
-		// printf("%s", line);
-		free(line);
-		line = get_next_line(fd);
-		nb++;
-	}
-	map->row = nb;
-	return (nb);
-}
-// void init_memory_for_map(int fd, t_map *map, int row)
-// {
-// 	char *line;
-// 	int len;
-// 	int i = 0;
-
-// 	map->map = malloc(sizeof(char *) * (row + 1));
-// 	if (!map->map)
-// 		return;
-
-// 	while (i < row && (line = get_next_line(fd)))
-// 	{ 
-// 		// Measure line length until \0 (not just '\n')
-// 		len = 0;
-// 		while (line[len] && line[len] != '\n')
-// 			len++;
-
-// 		map->col = len;
-// 		map->map[i] = malloc(len + 1);
-// 		if (!map->map[i])
-// 			return ; // you might want to handle malloc failure
-
-// 		// Copy the line content up to len
-// 		for (int j = 0; j < len; j++)
-// 			map->map[i][j] = line[j];
-// 		map->map[i][len] = '\0';
-
-// 		free(line);
-// 		i++;
-// 	}
-
-// 	map->map[i] = NULL; // optional: null-terminate the map array
-// }
-
-int	get_map(t_map *sl, char *filename)
-{
-	int		fd;
-	int		row_count = 0;
-	char	*line;
 	int		line_len;
+	int		j;
 
-	fd = open(filename, O_RDONLY);
-	// printf("%d", fd);
-	if (fd < 0)
+	line_len = 0;
+	while (line[line_len] && line[line_len] != '\n')
+		line_len++;
+	m->col = line_len;
+	m->map[row] = malloc(line_len + 1);
+	if (!m->map[row])
 		return (1);
-
-	// Перша фаза — рахуємо кількість рядків
-	while ((line = get_next_line(fd)))
-	{
-		if (line[numberblank(line)] == '1' || line[numberblank(line)] == '0')
-			row_count++;
-		free(line);
-	}
-	close(fd);
-
-	sl->row = row_count;
-	sl->map = malloc(sizeof(char *) * (row_count + 1));
-	if (!sl->map)
-		return (1);
-
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-		return (1);
-
-	// Друга фаза — читаємо і зберігаємо рядки
-	int row = 0;
-	while (row < row_count && (line = get_next_line(fd)))
-	{
-		if (line[numberblank(line)] == '1' || line[numberblank(line)] == '0')
-		{
-			line_len = 0;
-			while (line[line_len] && line[line_len] != '\n')
-				line_len++;
-
-			sl->col = line_len;
-			sl->map[row] = malloc(line_len + 1);
-			if (!sl->map[row])
-				return (1);
-
-			for (int j = 0; j < line_len; j++)
-				sl->map[row][j] = line[j];
-			sl->map[row][line_len] = '\0';
-
-			row++;
-		}
-		free(line);
-	}
-	sl->map[row] = NULL;
-	close(fd);
+	j = -1;
+	while (++j < line_len)
+		m->map[row][j] = line[j];
+	m->map[row][line_len] = '\0';
 	return (0);
 }
 
-
-int	checkmap(t_map *sl)
-{
-	if (sl->player < 1)
-		printf("There must be a player 'P'");
-	if (sl->player > 1)
-		printf("Multiplayer is not unavailable");
-	// if (sl->exitset < 1)
-	// 	ft_error(sl, "There must be an exit 'E'");
-	// if (sl->exitset > 1)
-	// 	ft_error(sl, "There must be only 1 exit");
-	// if (sl->collectibletotal == 0)
-	// 	ft_error(sl, "There must be a collectible 'C'");
-	// check_wall(sl);    receack later
-	return (0);
-}
-
-void free_path(t_map *map)
-{
-		free(map->path->ea_path);
-		free(map->path->no_path);
-		free(map->path->so_path);
-		free(map->path->we_path);
-		free(map->path);
-}
-void free_game(t_game *game)
+void	error_free(t_map *m, int rows)
 {
 	int	i;
 
-	if (!game)
-		return;
-
-	if (game->map)
+	i = 0;
+	while (i < rows)
 	{
-		i = 0;
-		while (game->map->map[i])
-		{
-			free(game->map->map[i]);
-			i++;
-		}
-		free(game->map);
-		game->map = NULL;
+		if (m->map[i])
+			free(m->map[i]);
+		i++;
 	}
-	if(game->map)
-	{
-		free_path(game->map);
-	}
-
-	if (game->mlx && game->img)
-		mlx_destroy_image(game->mlx, game->img);
-
-	if (game->mlx && game->win)
-		mlx_destroy_window(game->mlx, game->win);
-
-	if (game->mlx)
-	{
-		mlx_destroy_display(game->mlx);
-		free(game->mlx);
-		game->mlx = NULL;
-	}
+	free(m->map);
 }
 
-// int main(int argc, char **argv)
-// {
-// 	(void) argc;
-// 	t_map map;
-// 	get_map(&map, argv[1]);
-// 	int i = 0;
-// 	while (map.map[i])
-// 	{
-// 		printf("%s\n", map.map[i]);
-// 		i++;
-// 	}
-	
-// 	free_map(&map);
-// }
+int	handle_map_line(t_map *m, int *row)
+{
+	if (copy_map_line(m, m->l, *row))
+	{
+		free(m->l);
+		error_free(m, *row);
+		return (1);
+	}
+	(*row)++;
+	return (0);
+}
 
-// int	map_memmory(t_long *sl)
-// {
-// 	int	i;
+int	get_map(t_map *m, char *filename)
+{
+	int	row;
 
-// 	i = 0;
-// 	sl->map = malloc(sizeof(char *) * sl->y);
-// 	while (i < sl->y)
-// 	{
-// 		sl->map[i] = malloc(sizeof(char) * (sl->x + 1));
-// 		i++;
-// 	}
-// 	sl->maptofree = 1;
-// 	return (1);
-// }
-
-// int	check_valid(char c)
-// {
-// 	if (c != '0' && c != 'a' && c != '1' && c != 'P' && c != 'c' && c != 'E'
-// 		&& c != 'd' && c != 'C' && c != 'e')
-// 		return (0);
-// 	return (1);
-// }
+	init_memory(m, filename);
+	m->fd = open(filename, O_RDONLY);
+	if (m->fd < 0)
+		return (1);
+	row = 0;
+	m->l = get_next_line(m->fd);
+	while (m->l && row < m->row)
+	{
+		if (is_line_map_data(m->l))
+		{
+			if (handle_map_line(m, &row))
+				return (1);
+		}
+		free(m->l);
+		m->l = get_next_line(m->fd);
+	}
+	free(m->l);
+	m->map[row] = NULL;
+	close(m->fd);
+	get_next_line(-1);
+	return (0);
+}
