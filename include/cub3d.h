@@ -8,7 +8,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 # include "keycodes.h"
-// # include <mlx.h>
+# include <mlx.h>
 // # include "get_next_line.h"   i don`t have get_next_line in myown laptop so i created new littel one in parser if you need you can use or add yor get_nex_line 
 // # include "my_mlx.h"
 # include <math.h>
