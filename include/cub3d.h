@@ -33,6 +33,31 @@
 #  define BUFFER_SIZE 32
 # endif
 
+typedef enum e_cub_err
+{
+	end,
+	inv_argc,
+	inv_ext,
+	inv_file,
+	empty_file,
+	no_memory,
+	inv_color,
+	inv_wall,
+	inv_map,
+	inv_charac,
+	inv_player,
+	inv_tex,
+	inv_pwd
+}	t_cub_err;
+
+typedef struct s_color
+{
+	long	t;
+	long	r;
+	long	g;
+	long	b;
+}				t_color;
+
 typedef struct s_ray
 {
 	float	incre_angle;
@@ -78,6 +103,10 @@ typedef struct s_map
     int x;
     int y;
     int player_count;
+    int player;
+    double			casetotal;
+    int				player_x;
+	int	player_y;
     t_path      *path;
 } t_map;
 
@@ -91,6 +120,20 @@ typedef struct s_key
 	int	right_pressed;
 }				t_key;
 
+typedef struct s_tex
+{
+	t_list	*n;
+	t_list	*n_bak;
+	t_list	*s;
+	t_list	*s_bak;
+	t_list	*w;
+	t_list	*w_bak;
+	t_list	*e;
+	t_list	*e_bak;
+	t_img	*b;
+	int		floor;
+	int		ceiling;
+}				t_tex;
 
 typedef struct s_player
 {
@@ -98,7 +141,7 @@ typedef struct s_player
 	float	y;
 	char	dir;
 	float	speed;
-	int		door_cooldown;
+	//int		door_cooldown;
 	t_key	keys;
 }				t_player;
 
@@ -106,36 +149,29 @@ typedef struct s_game
 {
 	int				player_x;
 	int				player_y;
-	// int			fd;
-	// int			mouse_x;
-	// int			rate;
+	int			fd;
+	int			mouse_x;
+	int			rate;
 	// int			neg;
-	// long		nframes;
+	long		nframes;
 	void		*mlx;
 	void		*win;
     void        *img;
 
-	// t_img		win_img;
-	// t_img		win_g;
-	// t_img		win_r;
-	// t_img		minimap;
+	t_img		win_img;
+	t_img		win_g;
+	t_img		win_r;
+	t_img		minimap;
 	// t_img		miniview;
 	// t_img		*scope;
-	// t_tex		tex;
-	// t_ray		ray;
+	t_tex		tex;
+	t_ray		ray;
     t_map       *map;
-	// t_player	pl;
-	// float		x;
-	// float		y;
+	t_player	pl;
+	float		x;
+	float		y;
 }				t_game;
 
-
-
-
-float	degree_to_radians(float degree);
-void	raycast(t_game *g);
-int	check_if_c(char *m, char c, int n0, int n1);
-int atoi_cub(const char *nptr, long *nbr);
 
 /* ..parsing/checkmap.c */
 int	check_exten(int argc, char *str);
@@ -196,5 +232,60 @@ int	str_len(const char *s);
 int	allow_char(char c);
 int	count_len_row(t_map *map);
 int	is_empty_line(char *line);
+
+/*raycasting and utils*/
+void    ray_init(t_game *g);
+float   wall_distance(t_game *g, float ray_angle);
+float	degree_to_radians(float degree);
+void	raycast(t_game *g);
+int	check_if_c(char *m, char c, int n0, int n1);
+int	atoi_cub(const char *nptr, long *nbr);
+void	ft_free_matrix(char ***matrix);
+
+/*paint of textures and setting color*/
+t_img	*texture_get(t_game *g);
+int	get_tex_color(t_game *g, t_img *i, int z);
+void	draw_texture(t_game *g, t_img *i, int ray_count, int wall_height);
+void	cub_draw(t_game *g, int ray_count, float dis);
+int	create_transpgb(t_color c);
+t_color	create_rgbt(int col);
+void	get_cf_color(char **dir, t_game *g);
+int	get_dist_color(int color, float dist, int transp);
+void	ft_free_matranspix(char ***matrix);
+int	ft_matranspixlen(char **matrix);
+int	ft_stranspncmp(const char *s1, const char *s2, size_t n);
+
+/*render*/
+void	redraw_element(t_game *g, t_img img, int x, int y);
+void	animation_update(t_game *g);
+void	check_move(t_game *g);
+int cub_update(void *param);
+
+/* player */
+float	distance_to_wall(t_game *g, float ray_angle, float *x, float *y);
+void	move_pl(int k, t_game *g, float ray_cos, float ray_sin);
+
+/* minimap */
+int	get_mini_color(t_game *g, int len, int xy[2]);
+void	cub_minimap(t_game *g);
+
+/* game */
+int	cub_keyup(int k, t_game *g);
+int	cub_keydown(int k, t_game *g);
+int	cub_mouse(int x, int y, t_game *g);
+void	init_attr(t_game *g);
+void	game_init(t_game *g);
+
+/* error handling */
+int	cub_perror(t_cub_err err, t_game *g, char *param, int c);
+void	cub_usage(int errno);
+int	cub_exit(void *param);
+
+/* finishing */
+void	free_animation(t_game *g, t_list *start);
+void	destroy_images(t_game *g);
+void	cub_end(t_game *g);
+
+#endif
 
 #endif
