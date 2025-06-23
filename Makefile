@@ -3,8 +3,10 @@ NAME	= cub3d
 MLX			= libmlx.a
 LIBFT		= libft/libft.a
 
-SRCS		= parsing/*.c  main.c
-				# utils.c raycasting.c
+SRCS		= $(wildcard parsing/*.c) main.c \
+	   game.c color.c error.c minimap.c my_mlx.c \
+	   player.c raycasting.c render.c text_paint.c utils.c \
+	   color_utils.c finish_linux.c finish_mac.c
 			  
 
 CC			= cc
@@ -38,18 +40,21 @@ LIBFT_INC	= -Ilibft/includes
 all: $(NAME)
 
 $(MLX_LIB):
-	$(MAKE) -C $(MLX_DIR)
+	$(MAKE) -C $(MLX_DIR) > /dev/null 2>&1
+
+$(LIBFT):
+	$(MAKE) -C libft > /dev/null
 
 $(NAME): $(MLX_LIB)
 	@echo "$(YELLOW)[INFO]$(RESET) CUB3D COMPILATION...$(RESET)"
 	@$(MAKE) -C $(MLX_DIR)
-	$(CC) $(CFLAGS) -o $(NAME) $(SRCS) $(MLX_INC) $(LIBFT_INC) $(MLX_FLAGS) $(LIBFT)
+	@$(CC) $(CFLAGS) -o $(NAME) $(SRCS) $(MLX_INC) $(LIBFT_INC) $(MLX_FLAGS) $(LIBFT)
 	@echo "$(GREEN)[SUCCESS] CUB3D SUCCESSFULLY CREATED!$(RESET)"
 
 clean:
 	@echo "$(RED)DELETING OF LAST VERSION...$(RESET)"
 	@$(MAKE) -C $(MLX_DIR) clean
-	rm -rf cub3d.dSYM >/dev/null 2>&1
+	@rm -rf cub3d.dSYM >/dev/null 2>&1
 
 fclean: clean
 	rm -f $(NAME)
