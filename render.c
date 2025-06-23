@@ -58,10 +58,10 @@ int cub_update(void *param)
 		cub_minimap(g);   // рисует карту
 		raycast(g);   // рендерит сцену (стены, текстуры, лучи)
 		// cub_miniview(g);  // мини-камера от первого лица
-		redraw_element(g, *g->scope, WIN_W / 2 - g->scope->width / 2,
-			WIN_H / 2 - g->scope->height / 2);
-		redraw_element(g, g->miniview, WIN_W - g->miniview.width - 20,
-			WIN_H - g->miniview.height - 20);
+		// redraw_element(g, *g->scope, WIN_W / 2 - g->scope->width / 2,
+		// 	WIN_H / 2 - g->scope->height / 2);
+		// redraw_element(g, g->miniview, WIN_W - g->miniview.width - 20,
+		// 	WIN_H - g->miniview.height - 20);
 		mlx_put_image_to_window(g->mlx, g->win, g->win_img.i, 0, 0);
 	}
 	g->nframes++;
