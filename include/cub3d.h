@@ -170,7 +170,7 @@ int	count_map_rows(t_map *m, char *file, int *row_count);
 char	*get_next_line(int fd); 
 
 /* ..parsing/parsing.c */
-void	init_parser(int argc, char **argv);
+int	init_game_data(t_game *game, char *filename);
 
 /* ..parsing/read_path.c */
 char	*trim_newline(char *str);
@@ -185,7 +185,7 @@ int	parse_color(t_game *g, char *line);
 int	count_color_exist(t_game *game);
 int	get_color(t_game *game, char *filename);
 
-/* ..errors_and_find_p.c */
+/* ..errors_and.c */
 int forbedden(t_game *g);
 int error_map(t_game *g);
 int	find_player(t_game *g);

@@ -6,7 +6,7 @@
 /*   By: fortytwo <fortytwo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 11:55:46 by fortytwo          #+#    #+#             */
-/*   Updated: 2025/06/23 12:02:06 by fortytwo         ###   ########.fr       */
+/*   Updated: 2025/06/23 13:18:09 by fortytwo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,27 +113,4 @@ int	init_game_data(t_game *game, char *filename)
 	if (error_map(game))
 		return (1);
 	return (0);
-}
-
-void	init_parser(int argc, char **argv)
-{
-	t_game	game;
-	t_map	map;
-	int		i;
-
-	game.map = &map;
-	if ((check_exten(argc, argv[1]) == 1)
-		|| (get_map(&map, argv[1]) == 1))
-		return ;
-	if (init_game_data(&game, argv[1]))
-		return ;
-	printf("%d\n", game.player_x);
-	printf("%d\n", game.player_y);
-	i = 0;
-	while (map.map[i])
-	{
-		printf("%s\n", map.map[i]);
-		i++;
-	}
-	free_game_map(&game);
 }
