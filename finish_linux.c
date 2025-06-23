@@ -39,7 +39,7 @@ void	destroy_images(t_game *g)
 	// if (g->miniview.i)
 	// 	mlx_destroy_image(g->mlx, g->miniview.i);
 	free(g->tex.b);
-	free(g->scope);
+	//free(g->scope);
 }
 
 void	cub_end(t_game *g)
