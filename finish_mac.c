@@ -46,7 +46,7 @@ void	cub_end(t_game *g)
 {
 	if (!g)
 		return ;
-	ft_free_matrix(&g->map);
+	ft_free_matrix(&(g->map->map));
 	if (g->fd > 0)
 		close(g->fd);
 	destroy_images(g);
