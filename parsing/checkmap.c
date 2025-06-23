@@ -25,7 +25,7 @@ int	check_exten(int argc, char *str)
 	len = ft_strlen(str);
 	if (len < 5 || ft_strncmp(str + len - 4, ".cub", 4) != 0)
 	{
-		write(2, "Not correct file extension .ber\n", 33);
+		write(2, "Not correct file extension .cub\n", 33);
 		return (1);
 	}
 	return (0);
