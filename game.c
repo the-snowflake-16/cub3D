@@ -60,8 +60,8 @@ void	init_attr(t_game *g)
 		&g->win_r.len_line, &g->win_r.endian);
 	my_mlx_area_put(&g->win_r, ft_newvector(0, 0), \
 		ft_newvector(WIN_W, WIN_H), 0x00FF0000);
-	g->minimap.i = mlx_new_image(g->mlx, g->width * SIZE, \
-		g->height * SIZE);
+	g->minimap.i = mlx_new_image(g->mlx, g->map->col * SIZE,\
+		g->map->row * SIZE);
 	g->minimap.addr = mlx_get_data_addr(g->minimap.i, &g->minimap.bpp, \
 		&g->minimap.len_line, &g->minimap.endian);
 	// g->miniview.i = mlx_new_image(g->mlx, 30 * SIZE, 15 * SIZE);
