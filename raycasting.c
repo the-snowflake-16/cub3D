@@ -3,11 +3,11 @@
 void    ray_init(t_game *g)
 {
     g->ray.angle = 0;
-    if (g->pl.dir = "S")
+    if (g->pl.dir == 'S')
         g->ray.angle = 90;
-    else if (g->pl.dir = "W")
+    else if (g->pl.dir == 'W')
         g->ray.angle = 180;
-    else if (g->pl.dir = "N")
+    else if (g->pl.dir == 'N')
         g->ray.angle = 270;
     g->ray.hfov = 30;
     g->ray.incre_angle = 2 * g->ray.hfov / WIN_W;
@@ -23,13 +23,13 @@ float   wall_distance(t_game *g, float ray_angle)
     g->ray.sin = sin(degree_to_radians(ray_angle)) / g->ray.precision;
     g->x = g->pl.x + 0.5;
     g->y = g->pl.y + 0.5;
-    while(!ft_strchr("1c", g->map[(int)g->y][(int)g->x]) && \
+    while(!ft_strchr("1c", g->map->map[(int)g->y][(int)g->x])&& \
         sqrt(powf(g->x -g->pl.x - 0.5, 2.) + \
         powf(g->y - g->pl.y - 0.5, 2.)) < g->ray.limit)
     {
         g->x += g->ray.cos;
         g->y += g->ray.sin;
-        if (ft_strchr("1c", g->map[(int)g->y][(int)g->x]))
+        if (ft_strchr("1c", g->map->map[(int)g->y][(int)g->x]))
             my_mlx_pixel_put(&g->minimap, g->x * SIZE, g->y * SIZE, 0x00FF0000);
         else if (ray_angle - 1 < g->ray.angle && ray_angle + 1 > g->ray.angle)
             my_mlx_pixel_put(&g->minimap, g->x * SIZE, g->y * SIZE, 0x0000FF00);
@@ -38,8 +38,8 @@ float   wall_distance(t_game *g, float ray_angle)
     }
     my_mlx_area_put(&g->minimap, ft_newvector((int)(g->pl.x + 0.5) * SIZE, \
 		(int)(g->pl.y + 0.5) * SIZE), ft_newvector(SIZE, SIZE), 0x00FDD663);
-	d = sqrt(powf(g->x - g->pl.x - 0.5, 2.) + powf(g->y - g->pl.y - 0.5, 2.));
-	return (d * cos(degree_to_radians(ray_angle - g->ray.angle)));
+	dist = sqrt(powf(g->x - g->pl.x - 0.5, 2.) + powf(g->y - g->pl.y - 0.5, 2.));
+	return (dist * cos(degree_to_radians(ray_angle - g->ray.angle)));
 }
 
 void    raycast(t_game *g)

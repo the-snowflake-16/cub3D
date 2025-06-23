@@ -6,14 +6,14 @@ t_img	*mlx_load_img(void *ptr, char *path)
     t_img   *i;
     i = malloc(sizeof(t_img));
     i->i = NULL;
-    if (!path || ft_strrncmp(path, ".xpm", 4))
+    if (!path || ft_strncmp(path, ".xpm", 4))
         return (i);
     fd = open(path, O_RDONLY);
     if (fd < 0)
         return (i);
-    clode(fd);
+    close(fd);
     i->i = mlx_xpm_file_to_image(ptr, path, &i->width, &i->height);
-    i->addr = mlx_get_data_addr(i->i, &i->bpp, &i->line_len, &i->endian);
+    i->addr = mlx_get_data_addr(i->i, &i->bpp, &i->len_line, &i->endian);
     return (i);
 }
 
@@ -35,7 +35,7 @@ int atoi_cub(const char *nptr, long *nbr)
         nptr++;
     }
     if (*nptr)
-        retrun (-1);
+        return (-1);
     return (0);
 }
 
@@ -51,4 +51,21 @@ int	check_if_c(char *m, char c, int n0, int n1)
 		i++;
 	}
 	return (0);
+}
+
+void	ft_free_matrix(char ***matrix)
+{
+	int	i;
+
+	i = 0;
+	while (matrix && matrix[0] && matrix[0][i])
+	{
+		free(matrix[0][i]);
+		i++;
+	}
+	if (matrix)
+	{
+		free(matrix[0]);
+		*matrix = NULL;
+	}
 }
