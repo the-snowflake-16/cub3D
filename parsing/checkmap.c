@@ -19,7 +19,7 @@ int	check_exten(int argc, char *str)
 	if (argc != 2)
 	{
 		write(2, "Error\nIncorect number of arguments.\n", 37);
-		write(2, "Usage: ./cub3d map/map_name.ber\n", 32);
+		write(2, "Usage: ./cub3d map/map_name.cub\n", 32);
 		return (1);
 	}
 	len = ft_strlen(str);
