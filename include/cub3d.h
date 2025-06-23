@@ -287,5 +287,3 @@ void	destroy_images(t_game *g);
 void	cub_end(t_game *g);
 
 #endif
-
-#endif
