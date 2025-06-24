@@ -157,7 +157,8 @@ typedef struct s_game
 	void		*mlx;
 	void		*win;
     void        *img;
-
+int			height;
+	int			width;
 	t_img		win_img;
 	t_img		win_g;
 	t_img		win_r;
