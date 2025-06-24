@@ -3,10 +3,11 @@ NAME	= cub3d
 MLX			= libmlx.a
 LIBFT		= libft/libft.a
 
-SRCS		= $(wildcard parsing/*.c) main.c \
+SRCS		=  parser.c get_map.c get_next_line.c main.c \
 	   game.c color.c error.c minimap.c my_mlx.c \
 	   player.c raycasting.c render.c text_paint.c utils.c \
-	   color_utils.c finish_linux.c finish_mac.c
+	   color_utils.c finish_mac.c get_next_line_utils.c
+	   #$(wildcard parsing/*.c)
 			  
 
 CC			= cc
@@ -43,9 +44,10 @@ $(MLX_LIB):
 	$(MAKE) -C $(MLX_DIR) > /dev/null 2>&1
 
 $(LIBFT):
+	@echo "$(YELLOW)[INFO] COMPILING LIBFT...$(RESET)"
 	$(MAKE) -C libft > /dev/null
 
-$(NAME): $(MLX_LIB)
+$(NAME): $(MLX_LIB) $(LIBFT)
 	@echo "$(YELLOW)[INFO] CUB3D COMPILATION...$(RESET)"
 	@$(MAKE) -C $(MLX_DIR)
 	@$(CC) $(CFLAGS) -o $(NAME) $(SRCS) $(MLX_INC) $(LIBFT_INC) $(MLX_FLAGS) $(LIBFT)
