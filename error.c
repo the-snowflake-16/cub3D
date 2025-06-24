@@ -18,7 +18,8 @@ int	cub_perror(t_cub_err err, t_game *g, char *param, int c)
 	write(2, "invalid character\n", 18 * (err == inv_charac));
 	write(2, "invalid texture file\n", 21 * (err == inv_tex));
 	write(2, "invalid number of players\n", 26 * (err == inv_player));
-	ft_putendl_fd(param, 2);
+	if (param)
+		ft_putendl_fd(param, 2);
 	if (err == inv_argc && ft_putchar_fd('\n', 2))
 		cub_usage(1);
 	if (err == end)
