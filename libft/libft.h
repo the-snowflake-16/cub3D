@@ -61,5 +61,9 @@ void				ft_putnbr_fd(int nb, int fd);
 int					ft_strcmp(const char *s1, const char *s2);
 char				*ft_strndup(const char *s, size_t n);
 int					ft_strrncmp(const char *s1, const char *s2, size_t n);
+int					ft_strrncmp(const char *s1, const char *s2, size_t n);
+int					ft_countchar(char *s, char c);
+void				ft_lstadd_back(t_list **lst, t_list *newnode);
+t_list				*ft_lstnew(void *content);
 
 #endif
