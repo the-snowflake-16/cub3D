@@ -157,7 +157,7 @@ typedef struct s_game
 	void		*mlx;
 	void		*win;
     void        *img;
-int			height;
+	int			height;
 	int			width;
 	t_img		win_img;
 	t_img		win_g;
@@ -174,65 +174,85 @@ int			height;
 }				t_game;
 
 
-/* ..parsing/checkmap.c */
-int	check_exten(int argc, char *str);
-int	incorect_char(t_game *g);
-char	*pad_line_with_spaces(char *line, size_t max_len);
-void	add_space(t_map *map);
-char	**copy_map(char **map, int height);
+// /* ..parsing/checkmap.c */
+// int	check_exten(int argc, char *str);
+// int	incorect_char(t_game *g);
+// char	*pad_line_with_spaces(char *line, size_t max_len);
+// void	add_space(t_map *map);
+// char	**copy_map(char **map, int height);
 
-/* check_valid_map.c */ 
-int is_map_full(t_game *g, t_map *map);
-int is_map_closed_by_walls(t_game *g);
+// /* check_valid_map.c */ 
+// int is_map_full(t_game *g, t_map *map);
+// int is_map_closed_by_walls(t_game *g);
 
-/* ..parsing_error_and_free.c */ 
-void	free_split(char **arr);
-int	ft_error(t_game *game, const char *msg);
-void	free_map_array(char **map);
-void	free_game_map(t_game *game);
+// /* ..parsing_error_and_free.c */ 
+// void	free_split(char **arr);
+// int	ft_error(t_game *game, const char *msg);
+// void	free_map_array(char **map);
+// void	free_game_map(t_game *game);
 
-/*..parsing/get_color.c */
-int	get_color(t_game *game, char *filename);
+// /*..parsing/get_color.c */
+// int	get_color(t_game *game, char *filename);
 
-/*..parsing/get_map.c */
-int	get_map(t_map *map, char *filename);
+// /*..parsing/get_map.c */
+// int	get_map(t_map *map, char *filename);
 
-/*..parsing/get_map_utils.c */
-int	count_row(t_map *map, int fd);
-int	is_line_map_data(char *line);
-void	process_map_line(t_map *m, char *line, t_map_state *state);
-int	count_map_rows(t_map *m, char *file, int *row_count);
+// /*..parsing/get_map_utils.c */
+// int	count_row(t_map *map, int fd);
+// int	is_line_map_data(char *line);
+// void	process_map_line(t_map *m, char *line, t_map_state *state);
+// int	count_map_rows(t_map *m, char *file, int *row_count);
 
-/* ..parsing/get_next_line.c */
-char	*get_next_line(int fd); 
+// /* ..parsing/get_next_line.c */
+//char	*get_next_line(int fd); 
 
-/* ..parsing/parsing.c */
-int	init_game_data(t_game *game, char *filename);
+// /* ..parsing/parsing.c */
+// int	init_game_data(t_game *game, char *filename);
 
-/* ..parsing/read_path.c */
-char	*trim_newline(char *str);
-void	init_path(t_path *path);
-int	file_exists(const char *filepath);
-int	check_path_extension(t_game *game, char *path, char *dir);
-int chech_exist(t_game *game, t_path *path); 
+// /* ..parsing/read_path.c */
+// char	*trim_newline(char *str);
+// void	init_path(t_path *path);
+// int	file_exists(const char *filepath);
+// int	check_path_extension(t_game *game, char *path, char *dir);
+// int chech_exist(t_game *game, t_path *path); 
 
-/* ..parsing_error.c */ 
-int	count_rdb(char **rgb);
-int	parse_color(t_game *g, char *line);
-int	count_color_exist(t_game *game);
-int	get_color(t_game *game, char *filename);
+// /* ..parsing_error.c */ 
+// int	count_rdb(char **rgb);
+// int	parse_color(t_game *g, char *line);
+// int	count_color_exist(t_game *game);
+// int	get_color(t_game *game, char *filename);
 
-/* ..errors_and.c */
-int forbedden(t_game *g);
-int error_map(t_game *g);
-int	find_player(t_game *g);
+// /* ..errors_and.c */
+// int forbedden(t_game *g);
+// int error_map(t_game *g);
+// int	find_player(t_game *g);
 
-/* ..parsing/utils.c */
-int	numberblank(char *str);
-int	str_len(const char *s);
-int	allow_char(char c);
-int	count_len_row(t_map *map);
-int	is_empty_line(char *line);
+// /* ..parsing/utils.c */
+// int	numberblank(char *str);
+// int	str_len(const char *s);
+// int	allow_char(char c);
+// int	count_len_row(t_map *map);
+// int	is_empty_line(char *line);
+
+void	check_elements(t_game *g);
+char	**square_map(t_game *g);
+void	check_characters(t_game *g, char **map, int i, int j);
+void	check_walls(t_game *g, char **map, int i, int j);
+t_list	*get_anim(t_img *img, t_list **anim, int n[0][2]);
+void	check_textures(char *trim, t_game *g, int n[0][2]);
+void	read_map(char *file, t_game *g);
+void	check_map(t_game *g);
+int	ft_matrixlen(char **m);
+char	*get_next_line(int fd);
+char	*gnl_shrink_buffer(char *buf, char *line);
+char	*gnl_expand_buffer(char *buf, int fd);
+char	*gnl_newread(int fd);
+size_t	gnl_strlen(const char *s);
+char	*gnl_substr(char const *s, unsigned int start, size_t len);
+size_t	gnl_strlcpy(char *dst, const char *src, size_t size);
+int	gnl_strchr_i(const char *s, int c);
+size_t	gnl_strlcat(char *dst, const char *src, size_t size);
+
 
 /*raycasting and utils*/
 void    ray_init(t_game *g);
@@ -254,6 +274,7 @@ void	get_cf_color(char **dir, t_game *g);
 int	get_dist_color(int color, float dist, int transp);
 void	ft_free_matranspix(char ***matrix);
 int	ft_matranspixlen(char **matrix);
+char	**ft_extend_matrix(char **in, char *newstr);
 int	ft_stranspncmp(const char *s1, const char *s2, size_t n);
 
 /*render*/
