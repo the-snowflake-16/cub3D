@@ -38,6 +38,10 @@ SRC_NAME =	ft_atoi.c \
 			ft_putnbr_fd.c \
 			ft_strcmp.c \
 			ft_strndup.c \
+			ft_strrncmp.c \
+			ft_countchar.c \
+			ft_lstadd_back.c \
+			ft_lstnew.c \
 
 SRC = $(addprefix $(SRC_PATH), $(SRC_NAME))
 
