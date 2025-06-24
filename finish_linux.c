@@ -50,6 +50,8 @@ void	cub_end(t_game *g)
 	if (g->fd > 0)
 		close(g->fd);
 	destroy_images(g);
-	mlx_destroy_display(g->mlx);
+	#ifdef __linux__
+    	mlx_destroy_display(g->mlx);
+	#endif
 	free(g->mlx);
 }
